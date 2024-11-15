@@ -6,14 +6,15 @@
 /*   By: rmetge <rmetge@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 11:35:55 by rmetge            #+#    #+#             */
-/*   Updated: 2024/11/15 12:00:46 by rmetge           ###   ########.fr       */
+/*   Updated: 2024/11/15 15:51:42 by rmetge           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "printf.h"
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 int	ft_printf(const char *format, ...)
 {
@@ -28,11 +29,11 @@ int	ft_printf(const char *format, ...)
 		{
 			i++;
 			if (format[i] == 'c')
-				ft_putchar_fd(va_arg(args, char), 1);
+				ft_putchar_fd(va_arg(args, int), 1);
 			else if (format[i] == 's')
 				ft_putstr_fd(va_arg(args, char *), 1);
 			else if (format[i] == 'p')
-				ft_putstr_fd(va_arg(args, void *), 1);
+				ft_puthex((unsigned long int)va_arg(args, void *));
 			else if (format[i] == 'd')
 				ft_putnbr_fd(va_arg(args, int), 1);
 			else if (format[i] == 'i')
@@ -52,11 +53,12 @@ int	ft_printf(const char *format, ...)
 		}
 		i++;
 	}
-	return;
+	return 1;
 }
 
 int	main(void)
 {
-	ft_printf("coucoou");
-	printf("coucou");
+	char *str = "";
+	ft_printf("coucou %p", str);
+	printf("coucou %p", str);
 }
