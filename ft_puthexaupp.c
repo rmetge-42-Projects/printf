@@ -6,24 +6,24 @@
 /*   By: rmetge <rmetge@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 10:47:54 by rmetge            #+#    #+#             */
-/*   Updated: 2024/11/15 15:46:19 by rmetge           ###   ########.fr       */
+/*   Updated: 2024/11/18 09:24:45 by rmetge           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-void	ft_puthexaupp(unsigned int hex)
+void	ft_puthexaupp(int *nbr, unsigned int hex)
 {
-	if (hex > 16)
+	if (hex > 15)
 	{
-		ft_puthexalow(hex / 16);
-		ft_puthexalow(hex % 16);
+		ft_puthexaupp(nbr, hex / 16);
+		ft_puthexaupp(nbr, hex % 16);
 	}
 	else
 	{
 		if (hex < 10)
-			ft_putchar_fd(hex + '0', 1);
+			ft_putchar_nbr(nbr, hex + '0');
 		else
-			ft_putchar_fd(hex + 55, 1);
+			ft_putchar_nbr(nbr, hex + 55);
 	}
 }

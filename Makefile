@@ -9,6 +9,8 @@ SRC = ft_putunsigned.c\
 		ft_puthexalow.c\
 		ft_puthexaupp.c\
 		ft_puthex.c\
+		ft_putchar_nbr.c\
+		ft_printf.c\
 
 OBJ_DIR = obj
 OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)

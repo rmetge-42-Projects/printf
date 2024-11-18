@@ -5,25 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmetge <rmetge@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 10:05:18 by rmetge            #+#    #+#             */
-/*   Updated: 2024/11/15 15:47:35 by rmetge           ###   ########.fr       */
+/*   Created: 2024/11/16 14:51:51 by rmetge            #+#    #+#             */
+/*   Updated: 2024/11/18 09:24:21 by rmetge           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-void	ft_puthexalow(unsigned int hex)
+void	ft_puthexalow(int *nbr, unsigned int hex)
 {
-	if (hex > 16)
+	if (hex > 15)
 	{
-		ft_puthexalow(hex / 16);
-		ft_puthexalow(hex % 16);
+		ft_puthexalow(nbr, hex / 16);
+		ft_puthexalow(nbr, hex % 16);
 	}
 	else
 	{
 		if (hex < 10)
-			ft_putchar_fd(hex + '0', 1);
+			ft_putchar_nbr(nbr, hex + '0');
 		else
-			ft_putchar_fd(hex + 87, 1);
+			ft_putchar_nbr(nbr, hex + 87);
 	}
 }

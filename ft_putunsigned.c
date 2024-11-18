@@ -6,19 +6,19 @@
 /*   By: rmetge <rmetge@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 09:49:33 by rmetge            #+#    #+#             */
-/*   Updated: 2024/11/15 14:50:17 by rmetge           ###   ########.fr       */
+/*   Updated: 2024/11/16 15:33:33 by rmetge           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-void	ft_putunsigned(unsigned int n)
+void	ft_putunsigned(int *nbr, unsigned int n)
 {
 	if (n > 9)
 	{
-		ft_putunsigned(n / 10);
-		ft_putunsigned(n % 10);
+		ft_putunsigned(nbr, n / 10);
+		ft_putunsigned(nbr, n % 10);
 	}
 	else
-		ft_putchar_fd(n + '0', 1);
+		ft_putchar_nbr(nbr, n + '0');
 }
